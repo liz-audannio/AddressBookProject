@@ -14,13 +14,13 @@ public class AddressBook extends MainProject{
 			Scanner scanner = new Scanner(System.in);
 		
 			System.out.println("Great! Lets add a new entry. \n");
-			System.out.println("First Name: ");
+			System.out.println("First Name, i.e. Khalid: ");
 				String firstName = scanner.next();
-			System.out.println("Last Name: ");
+			System.out.println("Last Name, i.e. AlessiaCara: ");
 				String lastName = scanner.next();
-			System.out.println("Phone Number, i.e. 8881234567: ");
+			System.out.println("Phone Number, i.e. 8002738255: ");
 				String phone = scanner.next();
-			System.out.println("Email Address, i.e. email@mail.com: ");
+			System.out.println("Email Address, i.e. LogicSPL@email.com: ");
 				String email = scanner.next();
 
 			Contact contact = new Contact(firstName, lastName, phone, email);
@@ -60,12 +60,12 @@ public class AddressBook extends MainProject{
 		public static void searchAddressBook()
 		{
 			Scanner scanner = new Scanner(System.in);
-			
+
 			if(entries.isEmpty())
 			{
 				System.out.println("The Address Book is empty! Add an entry first. \n");
 			}
-			
+
 			else {
 				System.out.println("Choose what you'd like to search by. \n");
 				System.out.println
@@ -76,13 +76,13 @@ public class AddressBook extends MainProject{
 					+ "4 to search by Email Address"
 				);
 				int find = scanner.nextInt();
-					
+
 				if (!(find > 0 && find < 5))
 				{
 					System.out.println("Choice not available. Please enter a number 1 through 4. \n");
 					mainMenu();
 				}
-			
+
 				else if (!entries.isEmpty())
 				{
 					if (find == 1) // Searching by First Name
@@ -90,12 +90,11 @@ public class AddressBook extends MainProject{
 						System.out.println("Enter contacts First Name: ");
 						String descriptor = scanner.next();
 						for(Contact contact: entries) {
-							if (contact.getFirstName().contains(descriptor))
+							if (contact.getFirstName().matches(descriptor))
 							{
 								System.out.println(contact);
-							} else if (!(contact.getFirstName().contains(descriptor))){
+							} else if (!(contact.getFirstName().matches(descriptor))){
 								System.out.println("First name not found. Try your search again. \n");
-								break;
 							}
 						}
 					} else if (find == 2) {
